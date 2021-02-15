@@ -2,14 +2,15 @@ import * as React from "react";
 
 import { Pages } from "pages/index";
 import { AppGate } from "features/common/entry";
+import { ThemeProvider } from "features/common/theme-provider";
 import { GlobalStyles } from "ui/global";
 
 const Application = () => (
-  <div>
+  <ThemeProvider>
     <AppGate />
     <GlobalStyles />
     <Pages />
-  </div>
+  </ThemeProvider>
 );
-
+console.log(process.env);
 export default Application;
