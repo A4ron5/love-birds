@@ -9,40 +9,44 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development --env.development --open --hot --progress",
     "build": "webpack --mode production --env.production --progress",
-    "lint": "eslint './src/**/*.{ts,tsx}'",
-    "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix"
+    "lint": "eslint ./src/**/*.{ts,tsx}",
+    "lint:fix": "eslint ./src/**/*.{ts,tsx} --fix",
+    "lint:styled": "stylelint ./src/**/*.ts",
+    "test": ""
   },
   "devDependencies": {
-    "@babel/core": "7.12.13",
-    "@babel/plugin-transform-runtime": "7.12.15",
-    "@babel/preset-env": "7.12.13",
+    "@arkweid/lefthook": "^0.7.2",
+    "@babel/core": "7.12.17",
+    "@babel/plugin-transform-runtime": "7.12.17",
+    "@babel/preset-env": "7.12.17",
     "@babel/preset-react": "7.12.13",
-    "@babel/preset-typescript": "7.12.13",
+    "@babel/preset-typescript": "7.12.17",
     "@eslint-kit/eslint-config-base": "3.0.0",
     "@eslint-kit/eslint-config-prettier": "2.0.0",
     "@eslint-kit/eslint-config-react": "2.1.0",
     "@eslint-kit/eslint-config-typescript": "3.2.0",
-    "@types/node": "14.14.25",
-    "@types/react": "17.0.1",
-    "@types/react-dom": "17.0.0",
-    "@types/react-router-config": "^5.0.2",
-    "@types/react-router-dom": "^5.1.7",
+    "@types/node": "14.14.31",
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.1",
+    "@types/react-router-config": "5.0.2",
+    "@types/react-router-dom": "5.1.7",
     "@types/styled-components": "^5.1.7",
     "@types/webpack": "4.41.26",
     "@types/webpack-dev-server": "3.11.1",
-    "@typescript-eslint/eslint-plugin": "4.15.0",
-    "@typescript-eslint/parser": "4.15.0",
+    "@typescript-eslint/eslint-plugin": "4.15.1",
+    "@typescript-eslint/parser": "4.15.1",
     "babel-loader": "8.2.2",
-    "commitizen": "^4.2.3",
-    "cz-conventional-changelog": "3.3.0",
-    "eslint": "7.19.0",
-    "eslint-import-resolver-typescript": "2.3.0",
+    "eslint": "7.20.0",
+    "eslint-import-resolver-typescript": "2.4.0",
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "6.1.0",
-    "html-webpack-plugin": "4",
-    "husky": "5.0.9",
+    "html-webpack-plugin": "4.5.2",
     "pkg": "4.4.9",
     "prettier": "2.2.1",
+    "stylelint": "13.11.0",
+    "stylelint-config-recommended": "3.0.0",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-processor-styled-components": "1.10.0",
     "typescript": "4.1.5",
     "webpack": "4.46.0",
     "webpack-cli": "3.3.12",
@@ -50,25 +54,15 @@
   },
   "dependencies": {
     "dotenv": "8.2.0",
-    "effector": "21.8.2",
+    "effector": "21.8.3",
     "effector-react": "21.2.1",
     "history": "4.10.1",
-    "patronum": "^1.0.2",
+    "patronum": "1.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-router-config": "5.1.1",
     "react-router-dom": "5.2.0",
     "styled-components": "5.2.1",
     "styled-normalize": "8.0.7"
-  },
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
   }
 }
