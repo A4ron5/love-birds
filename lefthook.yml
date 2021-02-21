@@ -1,0 +1,25 @@
+pre-commit:
+  parallel: true
+  commands:
+    es-linting:
+      files: git diff --name-only @{push}
+      glob: "*.{ts,tsx}"
+      run: yarn lint {files}
+    style-linting:
+      files: git diff --name-only @{push}
+      glob: "*.{ts,tsx}"
+      run: yarn lint:styled {files}
+
+pre-push:
+  parallel: true
+  commands:
+    es-linting:
+      files: git diff --name-only @{push}
+      glob: "*.{ts,tsx}"
+      run: yarn lint {files}
+    style-linting:
+      files: git diff --name-only @{push}
+      glob: "*.{ts,tsx}"
+      run: yarn lint:styled {files}
+    test:
+      skip: true
