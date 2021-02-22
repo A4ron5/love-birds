@@ -12,5 +12,5 @@ const Application = () => (
     <Pages />
   </ThemeProvider>
 );
-console.log(process.env);
+
 export default Application;
