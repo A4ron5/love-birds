@@ -10,11 +10,9 @@ module.exports = () => {
   const enviesKeys =
     envies &&
     Object.keys(envies).reduce((prev, next) => {
-      const key = `process.env.${next}`;
-
       return {
         ...prev,
-        [key]: JSON.stringify(envies[next])
+        [next]: JSON.stringify(envies[next])
       };
     }, {});
 
@@ -54,7 +52,9 @@ module.exports = () => {
       new HtmlWebpackPlugin({
         template: "./public/index.html"
       }),
-      new webpack.DefinePlugin(enviesKeys),
+      new webpack.DefinePlugin({
+        "process.env": JSON.stringify(enviesKeys)
+      }),
       new ForkTsCheckerWebpackPlugin({
         eslint: {
           files: "./src/**/*.{ts,tsx,js,jsx}"
