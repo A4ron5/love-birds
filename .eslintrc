@@ -36,7 +36,8 @@
         ]
       }
     ],
-    "unicorn/prefer-query-selector": "off"
+    "unicorn/prefer-query-selector": "off",
+    "sonarjs/no-duplicate-string": "off"
   },
   "extends": [
     "@eslint-kit/base",
