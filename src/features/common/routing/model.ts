@@ -1,16 +1,18 @@
-import { createEvent, createEffect, createStore, sample } from "effector";
+import { createDomain, sample } from "effector";
 
 import { history, Location } from "lib/history";
 
 type SearchPush = Array<[string, string]>;
 type SearchPop = Array<string>;
 
-const historyPush = createEffect(history.push);
-const searchPush = createEvent<SearchPush>();
-const searchPop = createEvent<SearchPop>();
-const updateLocation = createEvent<Location>();
+const routingDomain = createDomain("routing");
 
-const $history = createStore<Location>(history.location);
+const historyPush = routingDomain.createEffect(history.push);
+const searchPush = routingDomain.createEvent<SearchPush>();
+const searchPop = routingDomain.createEvent<SearchPop>();
+const updateLocation = routingDomain.createEvent<Location>();
+
+const $history = routingDomain.createStore<Location>(history.location);
 const $pathname = $history.map(({ pathname }) => pathname);
 const $search = $history
   .map(({ search = "" }) => search)
@@ -45,6 +47,7 @@ sample({
 });
 
 export {
+  routingDomain,
   historyPush,
   searchPush,
   searchPop,
