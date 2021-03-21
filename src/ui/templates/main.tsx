@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { Header } from "features/common/header";
+import { Header } from "features/header";
 
 const Main = styled.main``;
 
