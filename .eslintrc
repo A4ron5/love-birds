@@ -37,7 +37,8 @@
       }
     ],
     "unicorn/prefer-query-selector": "off",
-    "sonarjs/no-duplicate-string": "off"
+    "sonarjs/no-duplicate-string": "off",
+    "@typescript-eslint/consistent-type-definitions": "off"
   },
   "extends": [
     "@eslint-kit/base",
