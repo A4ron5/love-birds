@@ -11,7 +11,7 @@
     "build": "webpack --mode=production --env --progress",
     "lint": "eslint ./src/**/*.{ts,tsx}",
     "lint:fix": "eslint ./src/**/*.{ts,tsx} --fix",
-    "lint:styled": "stylelint ./src/**/*.ts",
+    "lint:styled": "stylelint ./src/**/*.{ts,tsx}",
     "test": "jest"
   },
   "jest": {
@@ -34,7 +34,7 @@
     "@eslint-kit/eslint-config-prettier": "2.0.0",
     "@eslint-kit/eslint-config-react": "2.1.0",
     "@eslint-kit/eslint-config-typescript": "3.2.0",
-    "@types/jest": "^26.0.21",
+    "@types/jest": "26.0.21",
     "@types/node": "14.14.35",
     "@types/react": "17.0.3",
     "@types/react-dom": "17.0.2",
@@ -55,7 +55,7 @@
     "pkg": "4.4.9",
     "prettier": "2.2.1",
     "stylelint": "13.12.0",
-    "stylelint-config-recommended": "3.0.0",
+    "stylelint-config-recommended": "4.0.0",
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-processor-styled-components": "1.10.0",
     "typescript": "4.2.3",
