@@ -6,4 +6,8 @@ export const HeaderStyled = styled.header`
   height: 60px;
   padding: 10px 15px;
   background: var(--secondary-color);
+
+  div:last-child {
+    margin-left: auto;
+  }
 `;
