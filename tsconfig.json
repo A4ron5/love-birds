@@ -4,6 +4,7 @@
     "module": "commonjs",
     "target": "es5",
     "lib": [
+      "es2015",
       "esnext",
       "dom",
       "dom.iterable"
@@ -33,7 +34,7 @@
       ],
       "ui/*": [
         "src/ui/*"
-      ],
+      ]
     }
   },
   "include": [
