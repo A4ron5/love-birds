@@ -1,26 +1,33 @@
 import * as React from "react";
+import { Event } from "effector";
 import styled from "styled-components";
 
 import { Field, Button } from "ui/atoms";
 
 const Form = styled.form``;
 
+type AuthFormProps = {
+  submit: () => void;
+  handleChangePassword: Event<React.ChangeEvent<HTMLInputElement>>;
+  handleChangeEmail: Event<React.ChangeEvent<HTMLInputElement>>;
+};
+
 export const AuthForm = ({
-  sumbit,
+  submit,
   handleChangePassword,
   handleChangeEmail
-}) => {
+}: AuthFormProps) => {
   return (
     <Form onSubmit={submit}>
       <Field
-        id="email"
-        label="email"
+        name="email"
+        label="Email"
         type="email"
         handleChange={handleChangeEmail}
       />
       <Field
-        id="password"
-        label="password"
+        name="password"
+        label="Password"
         type="password"
         handleChange={handleChangePassword}
       />
