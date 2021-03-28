@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 import { root } from "lib/effector-root";
 
 type UserCredentials = {
@@ -11,7 +11,7 @@ type ChangeField = {
   value: string;
 };
 
-const submitForm = root.createEvent<UserCredentials>();
+const submitForm = root.createEvent<FormEvent<UserCredentials>>();
 const changeField = root.createEvent<ChangeField>();
 const handleChangeField = changeField.prepend<ChangeEvent<HTMLInputElement>>(
   (e) => ({
@@ -24,5 +24,7 @@ const $credentials = root.createStore<UserCredentials>({
   email: "",
   password: ""
 });
+
+submitForm.watch((e) => e.preventDefault());
 
 export { submitForm, changeField, handleChangeField, $credentials };
