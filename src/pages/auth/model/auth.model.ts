@@ -11,7 +11,7 @@ type ChangeField = {
   value: string;
 };
 
-const submitForm = root.createEvent<FormEvent<UserCredentials>>();
+const submit = root.createEvent<FormEvent<UserCredentials>>();
 const changeField = root.createEvent<ChangeField>();
 const handleChangeField = changeField.prepend<ChangeEvent<HTMLInputElement>>(
   (e) => ({
@@ -27,6 +27,6 @@ const $credentials = root.createStore<UserCredentials>({
   password: ""
 });
 
-submitForm.watch((e) => e.preventDefault());
+submit.watch((e) => e.preventDefault());
 
-export { submitForm, changeField, handleChangeField, auth, $credentials };
+export { submit, changeField, handleChangeField, auth, $credentials };

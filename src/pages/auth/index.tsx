@@ -3,7 +3,7 @@ import * as React from "react";
 import { MainTemplate } from "ui/templates";
 import { AuthForm } from "ui/molecules";
 
-import { handleChangeField, submitForm } from "./model";
+import { handleChangeField, submit } from "./model";
 
 export const AuthPage = () => {
   return (
@@ -12,7 +12,7 @@ export const AuthPage = () => {
       <AuthForm
         handleChangeEmail={handleChangeField}
         handleChangePassword={handleChangeField}
-        submit={submitForm}
+        submit={submit}
       />
     </MainTemplate>
   );
