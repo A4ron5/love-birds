@@ -12,7 +12,7 @@ module.exports = () => {
     Object.keys(envies).reduce((prev, next) => {
       return {
         ...prev,
-        [next]: JSON.stringify(envies[next])
+        [next]: envies[next]
       };
     }, {});
 
