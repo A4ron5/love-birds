@@ -20,6 +20,8 @@ const handleChangeField = changeField.prepend<ChangeEvent<HTMLInputElement>>(
   })
 );
 
+const auth = root.createEffect<UserCredentials, any>();
+
 const $credentials = root.createStore<UserCredentials>({
   email: "",
   password: ""
@@ -27,4 +29,4 @@ const $credentials = root.createStore<UserCredentials>({
 
 submitForm.watch((e) => e.preventDefault());
 
-export { submitForm, changeField, handleChangeField, $credentials };
+export { submitForm, changeField, handleChangeField, auth, $credentials };
