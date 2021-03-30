@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 import "firebase/auth";
 
 const config = {
@@ -10,7 +10,7 @@ const config = {
   appId: process.env.firebaseAppId
 };
 
-firebase.initializeApp(config, "love-birds");
+firebase.initializeApp(config);
 
 export const service = {
   auth: firebase.auth
