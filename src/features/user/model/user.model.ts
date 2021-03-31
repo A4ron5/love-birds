@@ -1,5 +1,10 @@
+import firebase from "firebase";
+import { createGate } from "effector-react";
+
 import { root } from "lib/effector-root";
 
-const clickUserIcon = root.createEvent<void>();
+export const clickUserIcon = root.createEvent<void>();
 
-export { clickUserIcon };
+export const $user = root.createStore<firebase.User | null>(null);
+
+export const UserGate = createGate();

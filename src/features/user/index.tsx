@@ -2,6 +2,11 @@ import * as React from "react";
 
 import { UserIcon } from "ui/atoms";
 
-import { clickUserIcon } from "./model";
+import { clickUserIcon, UserGate } from "./model";
 
-export const User = () => <UserIcon clickHandler={clickUserIcon} />;
+export const User = () => (
+  <>
+    <UserGate />
+    <UserIcon clickHandler={clickUserIcon} />
+  </>
+);
