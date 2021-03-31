@@ -1,4 +1,7 @@
 import { ChangeEvent, FormEvent } from "react";
+import { createGate } from "effector-react";
+import firebase from "firebase/app";
+
 import { root } from "lib/effector-root";
 
 type UserCredentials = {
@@ -11,22 +14,28 @@ type ChangeField = {
   value: string;
 };
 
-const submit = root.createEvent<FormEvent<UserCredentials>>();
-const changeField = root.createEvent<ChangeField>();
-const handleChangeField = changeField.prepend<ChangeEvent<HTMLInputElement>>(
-  (e) => ({
-    key: e.target.name,
-    value: e.target.value
-  })
-);
+type User = firebase.User | null;
 
-const auth = root.createEffect<UserCredentials, any>();
+type Error = firebase.FirebaseError | null;
 
-const $credentials = root.createStore<UserCredentials>({
+export const submit = root.createEvent<FormEvent<UserCredentials>>();
+export const changeField = root.createEvent<ChangeField>();
+export const handleChangeField = changeField.prepend<
+  ChangeEvent<HTMLInputElement>
+>((e) => ({
+  key: e.target.name,
+  value: e.target.value
+}));
+
+export const authFx = root.createEffect<UserCredentials, User, Error>();
+
+export const $credentials = root.createStore<UserCredentials>({
   email: "",
   password: ""
 });
 
-submit.watch((e) => e.preventDefault());
+export const $error = root.createStore<Error>(null);
 
-export { submit, changeField, handleChangeField, auth, $credentials };
+export const AuthPageGate = createGate();
+
+submit.watch((e) => e.preventDefault());

@@ -3,12 +3,14 @@ import * as React from "react";
 import { MainTemplate } from "ui/templates";
 import { AuthForm } from "ui/molecules";
 
-import { handleChangeField, submit } from "./model";
+import { handleChangeField, submit, AuthPageGate } from "./model";
+import { Title } from "./ui";
 
 export const AuthPage = () => {
   return (
     <MainTemplate>
-      <div>Sign in to your profile</div>
+      <AuthPageGate />
+      <Title>Sign in to your profile</Title>
       <AuthForm
         handleChangeEmail={handleChangeField}
         handleChangePassword={handleChangeField}
