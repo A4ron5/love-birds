@@ -4,7 +4,28 @@ import styled from "styled-components";
 
 import { Field, Button } from "ui/atoms";
 
-const Form = styled.form``;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  label {
+    width: 100%;
+    margin-bottom: 15px;
+
+    span {
+      margin-bottom: 3px;
+    }
+  }
+
+  input {
+    height: 30px;
+  }
+
+  label:last-of-type {
+    margin-bottom: 25px;
+  }
+`;
 
 type AuthFormProps = {
   submit: () => void;
