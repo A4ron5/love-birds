@@ -20,5 +20,6 @@ export const GlobalStyles = createGlobalStyle`
     font-family: JetBrainsMonoRegular, Arial, sans-serif;
     background-color: var(--background-color);
     color: var(--primary-color);
+    font-size: 16px;
   }
 `;
