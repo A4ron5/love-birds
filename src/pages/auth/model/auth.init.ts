@@ -1,16 +1,14 @@
-import { sample, forward, guard } from "effector";
+import { sample, forward } from "effector";
 
 import { service } from "features/common/authentication";
 import { historyPush } from "features/common/routing";
-import { $user } from "features/user/model";
 
 import {
   changeField,
   submit,
   authFx,
   $credentials,
-  $error,
-  AuthPageGate
+  $error
 } from "./auth.model";
 
 authFx.use(async ({ email, password }) => {
@@ -18,8 +16,6 @@ authFx.use(async ({ email, password }) => {
 
   return data.user;
 });
-
-$user.on(authFx.done, (state, { result }) => result);
 
 $credentials.on(changeField, (state, { key, value }) => ({
   ...state,
@@ -37,11 +33,4 @@ sample({
 forward({
   from: authFx.done,
   to: historyPush.prepend(() => "/")
-});
-
-guard({
-  source: $user,
-  clock: AuthPageGate.open,
-  filter: (user) => Boolean(user?.email),
-  target: historyPush.prepend(() => "/profile")
 });
