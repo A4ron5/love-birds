@@ -1,9 +1,18 @@
-import { sample } from "effector";
-import firebase from "firebase/app";
+import { guard, sample } from "effector";
 
 import { historyPush } from "features/common/routing";
+import { AppGate } from "features/common/mounting";
+import { authFx, AuthPageGate } from "pages/auth/model/auth.model";
 
-import { clickUserIcon, $user, UserGate } from "./user.model";
+import { getCurrentUser } from "../lib/getCurrentUser";
+
+import { clickUserIcon, fxOnAuthStateChanged, $user } from "./user.model";
+
+fxOnAuthStateChanged.use(getCurrentUser);
+
+$user
+  .on(authFx.done, (state, { result }) => result)
+  .on(fxOnAuthStateChanged.doneData, (_, user) => user);
 
 sample({
   source: $user,
@@ -16,13 +25,14 @@ sample({
   target: historyPush
 });
 
-// TODO: Ne UserGate, a ApplicationGate
 sample({
-  source: UserGate.open,
-  fn: (source) => {
-    console.log(
-      firebase.auth().onAuthStateChanged((user) => console.log(user?.email)),
-      "currentuser"
-    );
-  }
+  source: AppGate.open,
+  target: fxOnAuthStateChanged
+});
+
+guard({
+  source: $user,
+  clock: [AuthPageGate.open, $user],
+  filter: (user) => Boolean(user?.email),
+  target: historyPush.prepend(() => "/profile")
 });
