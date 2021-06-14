@@ -1,14 +1,29 @@
 import * as React from "react";
+import { useStore } from "effector-react";
 
 import { MainTemplate } from "ui/templates";
+import { Loader } from "ui/atoms";
+import { $user, $loading } from "features/user/model";
 
 import { ProfilePageGate } from "./model";
+import { Info } from "./ui/info";
 
-export const ProfilePage = () => {
+const Profile = () => {
+  const user = useStore($user);
+  const loading = useStore($loading);
+
+  if (loading) return <Loader />;
+
   return (
-    <MainTemplate>
+    <>
       <ProfilePageGate />
-      <div>ProfilePage</div>
-    </MainTemplate>
+      <Info user={user} />
+    </>
   );
 };
+
+export const ProfilePage = () => (
+  <MainTemplate>
+    <Profile />
+  </MainTemplate>
+);
