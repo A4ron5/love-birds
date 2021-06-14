@@ -11,5 +11,6 @@ export const fxOnAuthStateChanged = root.createEffect<
 >();
 
 export const $user = root.createStore<firebase.User | null>(null);
+export const $loading = root.createStore<boolean>(false);
 
 export const UserGate = createGate();

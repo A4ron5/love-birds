@@ -6,13 +6,20 @@ import { authFx, AuthPageGate } from "pages/auth/model/auth.model";
 
 import { getCurrentUser } from "../lib/getCurrentUser";
 
-import { clickUserIcon, fxOnAuthStateChanged, $user } from "./user.model";
+import {
+  clickUserIcon,
+  fxOnAuthStateChanged,
+  $user,
+  $loading
+} from "./user.model";
 
 fxOnAuthStateChanged.use(getCurrentUser);
 
 $user
   .on(authFx.done, (state, { result }) => result)
   .on(fxOnAuthStateChanged.doneData, (_, user) => user);
+
+$loading.on(fxOnAuthStateChanged.pending, (_, pending) => pending);
 
 sample({
   source: $user,
