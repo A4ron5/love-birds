@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Header } from "features/header";
 
 const Main = styled.main`
-  height: 100vh;
+  height: calc(100vh - 60px);
   padding: 0 15px;
 `;
 
