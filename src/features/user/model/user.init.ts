@@ -1,6 +1,6 @@
 import { guard, sample } from "effector";
 
-import { historyPush } from "features/common/routing";
+import { $pathname, historyPush } from "features/common/routing";
 import { AppGate } from "features/common/mounting";
 import { authFx, AuthPageGate } from "pages/auth/model/auth.model";
 import { fxLogout } from "pages/profile/model/profile.model";
@@ -42,8 +42,8 @@ sample({
 });
 
 guard({
-  source: $user,
+  source: [$user, $pathname],
   clock: [AuthPageGate.open, $user],
-  filter: (user) => Boolean(user?.email),
+  filter: ([user, pathname]) => Boolean(user?.email) && pathname === "/auth",
   target: historyPush.prepend(() => "/profile")
 });
