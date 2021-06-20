@@ -35,6 +35,7 @@ module.exports = () => {
     devServer: {
       historyApiFallback: true
     },
+    // devtool: "eval-cheap-module-source-map",
     module: {
       rules: [
         {
