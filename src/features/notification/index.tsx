@@ -10,7 +10,7 @@ export const Notification = () => {
 
   if (!notification) return null;
 
-  const { visibility, message, status } = notification;
+  const { message, status } = notification;
 
   return (
     <Popup
