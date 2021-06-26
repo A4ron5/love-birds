@@ -1,4 +1,5 @@
 import { sample, forward } from "effector";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { service } from "features/common/authentication";
 import { historyPush } from "features/common/routing";
@@ -12,7 +13,7 @@ import {
 } from "./auth.model";
 
 authFx.use(async ({ email, password }) => {
-  const data = await service.auth().signInWithEmailAndPassword(email, password);
+  const data = await signInWithEmailAndPassword(service.auth, email, password);
 
   return data.user;
 });

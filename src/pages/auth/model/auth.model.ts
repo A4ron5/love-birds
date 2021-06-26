@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent } from "react";
 import { createGate } from "effector-react";
-import firebase from "firebase/app";
+import { User as FirebaseUser } from "firebase/auth";
+import { FirebaseError } from "@firebase/util";
 
 import { root } from "lib/effector-root";
 
@@ -14,9 +15,9 @@ type ChangeField = {
   value: string;
 };
 
-type User = firebase.User | null;
+type User = FirebaseUser | null;
 
-type Error = firebase.FirebaseError | null;
+type Error = FirebaseError | null;
 
 export const submit = root.createEvent<FormEvent<UserCredentials>>();
 export const changeField = root.createEvent<ChangeField>();
