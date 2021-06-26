@@ -3,6 +3,8 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const dotenv = require("dotenv");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 module.exports = () => {
   const envies = dotenv.config().parsed;
@@ -30,7 +32,7 @@ module.exports = () => {
     },
     output: {
       path: path.join(__dirname, "/dist"),
-      filename: "build.js"
+      filename: "[name].bundle.[contenthash].min.js"
     },
     devServer: {
       historyApiFallback: true
@@ -64,7 +66,26 @@ module.exports = () => {
         eslint: {
           files: "./src/**/*.{ts,tsx,js,jsx}"
         }
-      })
-    ]
+      }),
+      new BundleAnalyzerPlugin()
+    ],
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          firebase: {
+            test: /[\\/]node_modules[\\/](@firebase)/,
+            name: "firebase",
+            chunks: "all",
+            priority: 2
+          },
+          commons: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "commons",
+            chunks: "all",
+            priority: 1
+          }
+        }
+      }
+    }
   };
 };
