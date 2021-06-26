@@ -1,5 +1,5 @@
-import firebase from "firebase/app";
-import "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 const config = {
   apiKey: process.env.firebaseApiKey,
@@ -10,8 +10,9 @@ const config = {
   appId: process.env.firebaseAppId
 };
 
-firebase.initializeApp(config);
+const app = initializeApp(config);
+const auth = getAuth(app);
 
 export const service = {
-  auth: firebase.auth
+  auth
 };
