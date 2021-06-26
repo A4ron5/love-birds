@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import firebase from "firebase/app";
+import { User } from "firebase/auth";
 
 const FieldContainer = styled.div``;
 const FieldName = styled.p`
@@ -19,7 +19,7 @@ const Field = ({ name, data }: { name: string; data: string | null }) => {
   );
 };
 
-export const Info = ({ user }: { user: firebase.User | null }) => {
+export const Info = ({ user }: { user: User | null }) => {
   if (!user) return null;
 
   const { email, emailVerified, displayName } = user;
