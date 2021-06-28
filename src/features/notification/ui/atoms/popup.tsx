@@ -11,6 +11,7 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.div`
+  position: relative;
   height: 30px;
   text-align: right;
 `;
@@ -22,6 +23,17 @@ const Content = styled.div`
   align-items: center;
 `;
 
+const Krestik = styled.div`
+  font-size: 1.8rem;
+
+  &:after {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    content: "\\00d7";
+  }
+`;
+
 type TPopup = TNotification & {
   closeHandler: Event<TNotification>;
 };
@@ -30,7 +42,7 @@ export const Popup = ({ message, status, closeHandler }: TPopup) => {
   return (
     <Wrapper>
       <Header>
-        <span onClick={() => closeHandler(null)}>X</span>
+        <Krestik onClick={() => closeHandler(null)} />
       </Header>
       <Content>
         {message}
