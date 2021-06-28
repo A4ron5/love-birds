@@ -32,7 +32,7 @@ module.exports = () => {
     },
     output: {
       path: path.join(__dirname, "/dist"),
-      filename: "[name].bundle.[contenthash].min.js"
+      filename: "[name].bundle.[hash].min.js"
     },
     devServer: {
       historyApiFallback: true
